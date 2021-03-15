@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS dates_db;
+
+CREATE DATABASE dates_db;
