@@ -1,4 +1,6 @@
 var yelpContent = document.getElementById('datePosts');
+// example code below
+var userInput = document.querySelector('input-field'); 
 
 var entertainmentArray = [];
 var foodArray = [];
@@ -24,7 +26,7 @@ function renderYelp(type) {
 	}
 }
 
-fetch(`https://api.yelp.com/v3/businesses/search`)
+fetch(`https://api.yelp.com/v3/businesses/search?term=restaurants&location=${userInput}`)
 	.then(function (response) {
 		return response.json();
 	})
