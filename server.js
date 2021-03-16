@@ -7,7 +7,7 @@ const routes = require('./routes');
 const sequelize = require('./config/connection');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3306;
 
 // Set up sessions
 const sess = {
@@ -17,8 +17,6 @@ const sess = {
 };
 
 app.use(session(sess));
-
-
 
 app.use(express.json());
 app.use(express.urlencoded({
