@@ -17,22 +17,33 @@
   </nav>
 
     <div class="container">
+
         <div style="margin-top: 80px;" class="jumbotron text-center">
-        <h4 class="mt-4"></h4>
+        <h4 class="mt-4">Pick the events you want to include in your date!</h4>
+        <div class="form-group" id="datePosts">
+            <label for="exampleFormControlSelect2">To select multiple events use CTRL + </label>
+            <select multiple class="form-control" id="exampleFormControlSelect2">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        <hr>
         <a class="btn btn-primary btn-lg mt-4" href="/notes" role="button">Populate Events</a>
         </div>
 
         <div class="container">
             <div style="margin-top: 80px;" class="jumbotron text-center">
-            <h2>Who are you inviting?</h2>
+            <h3>Who are you inviting?</h3>
             <input type="text">
-            </div>
-        </div>
-
-        <div class="container">
-            <div style="margin-top: 80px;" class="jumbotron text-center">
-            <h2>What time is your date?</h2>
-            <input type="datetime-local">
+            <hr>
+            <h3>What time is your date?</h3>
+            <input type="datetime-local" class="form-control">
+            <br>
+            <br>
+            <a class="btn btn-primary btn-lg mt-4" href="/notes" role="button">Create Your Date!</a>
             </div>
         </div>
 
