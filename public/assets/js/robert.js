@@ -16,7 +16,6 @@ function renderYelp(type) {
 	if (postObject[type].length === 0) {
 		console.log("Nothing to do around here!");
     
-		
 		yelpContent.appendChild(noFlair);
 		return;
 	}
