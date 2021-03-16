@@ -1,4 +1,4 @@
-const loginFormHandler = async function(event) {
+const loginFormHandler = async function (event) {
   event.preventDefault();
 
   const usernameEl = document.querySelector('#username-input-login');
@@ -10,7 +10,9 @@ const loginFormHandler = async function(event) {
       username: usernameEl.value,
       password: passwordEl.value,
     }),
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json'
+    },
   });
 
   if (response.ok) {
@@ -22,4 +24,4 @@ const loginFormHandler = async function(event) {
 
 document
   .querySelector('#login-form')
-  .addEventListener('submit', loginFormHandler);
+  .addEventListener('click', loginFormHandler);

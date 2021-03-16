@@ -1,4 +1,4 @@
-const signupFormHandler = async function(event) {
+const signupFormHandler = async function (event) {
   event.preventDefault();
 
   const usernameEl = document.querySelector('#username-input-signup');
@@ -10,7 +10,9 @@ const signupFormHandler = async function(event) {
       username: usernameEl.value,
       password: passwordEl.value,
     }),
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json'
+    },
   });
 
   if (response.ok) {
@@ -22,4 +24,4 @@ const signupFormHandler = async function(event) {
 
 document
   .querySelector('#signup-form')
-  .addEventListener('submit', signupFormHandler);
+  .addEventListener('click', signupFormHandler);
