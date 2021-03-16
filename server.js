@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express');
 // Import express-session
 const session = require('express-session');
-const exphbs = require('express-handlebars');
 
 const routes = require('./routes');
 const sequelize = require('./config/connection');
