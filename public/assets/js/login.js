@@ -22,6 +22,5 @@ const loginFormHandler = async function (event) {
   }
 };
 
-document
-  .querySelector('#login-form')
-  .addEventListener('click', loginFormHandler);
+document.querySelector('#login-form')
+document.addEventListener('click', loginFormHandler);
