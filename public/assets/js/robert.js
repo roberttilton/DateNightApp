@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 var yelpContent = document.getElementById('datePosts');
 // example code below
 var userInput = document.querySelector('input-field'); 

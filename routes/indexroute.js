@@ -2,7 +2,7 @@ const router = require('express').Router();
 const path = require('path');
 
 router.get('/index', (req, res) => {
-    response.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 router.get('/secondpage', (req, res) => {
@@ -14,6 +14,7 @@ router.get('/generatedcard', (req, res) => {
 });
 
 router.get('*', (req, res) => {
-    response.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
+
 module.exports = router;
