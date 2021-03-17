@@ -1,19 +1,16 @@
 {
-  "name": "DateNightApp",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "mysql": "^2.18.1",
     "sequelize": "^6.5.1"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "name": "DateNightApp",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/roberttilton/DateNightApp.git"
