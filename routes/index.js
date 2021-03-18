@@ -9,12 +9,12 @@ router.use('/secondpage', secondpageRoute);
 
 router.get('/', (req, res) => {
     console.log('GET /');
-    res.sendFile(path.join(__dirname, '../public/home.html'));
+    res.sendFile(path.join(__dirname, '../home.html'));
 });
 
 router.get('*', (req, res) => {
     console.log('GET 404 error');
-    res.sendFile(path.join(__dirname, '../public/404.html'));
+    res.sendFile(path.join(__dirname, '../404.html'));
 });
 
 module.exports = router;
