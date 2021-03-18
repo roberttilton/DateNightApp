@@ -27,11 +27,11 @@ const port = 3001;
 app.get("/", (req, res) => {
     //handle root
     res.sendFile(path.join(__dirname, '../public/home.html'))
-  });
+});
 
 app.listen(port, err => {
     if (err) {
-      return console.log("ERROR", err);
+        return console.log("ERROR", err);
     }
     console.log(`Listening on port ${port}`);
-  });
+});
