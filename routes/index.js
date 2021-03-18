@@ -20,12 +20,13 @@
 // module.exports = router;
 
 const express = require("express");
+const path = require('path');
 const app = express();
 const port = 3001;
 
 app.get("/", (req, res) => {
     //handle root
-    res.sendFile(path.join(__dirname, '/public/home.html'))
+    res.sendFile(path.join(__dirname, '../public/home.html'))
   });
 
 app.listen(port, err => {
