@@ -18,7 +18,7 @@ const {
       type: DataTypes.STRING,
       allowNull: false
     },
-    activity_title: {
+    business_name: {
       type: DataTypes.STRING,
       allowNull: false
     },

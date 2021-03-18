@@ -1,7 +1,8 @@
 const fetch = require('node-fetch');
 var yelpContent = document.getElementById('datePosts');
 // example code below
-var userInput = document.querySelector('input-field'); 
+var userLocation = document.querySelector('.location-field');
+var typeInput = document.querySelector('.activity-field');
 
 var entertainmentArray = [];
 var foodArray = [];
@@ -26,7 +27,7 @@ function renderYelp(type) {
 	}
 }
 
-fetch(`https://api.yelp.com/v3/businesses/search?term=restaurants&location=${userInput}`)
+fetch(`https://api.yelp.com/v3/businesses/search?term=${typeInput}&location=${userLocation}`)
 	.then(function (response) {
 		return response.json();
 	})
