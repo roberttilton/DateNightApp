@@ -6,11 +6,11 @@ router.get('/index', (req, res) => {
 });
 
 router.get('/secondpage', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/secondpage.html'));
+    response.sendFile(path.join(__dirname, '../public/secondpage.html'));
 });
 
 router.get('/generatedcard', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/generatedcard.html'));
+    response.sendFile(path.join(__dirname, '../public/generatedcard.html'));
 });
 
 router.get('*', (req, res) => {
@@ -18,4 +18,3 @@ router.get('*', (req, res) => {
 });
 
 module.exports = router;
-
