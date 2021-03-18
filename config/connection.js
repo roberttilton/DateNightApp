@@ -7,7 +7,7 @@ const sequelize = new Sequelize(
   'password', {
     host: 'localhost',
     dialect: 'mysql',
-    port: process.env.PORT || 3310,
+    port: process.env.PORT || 3001,
   }
 );
 
