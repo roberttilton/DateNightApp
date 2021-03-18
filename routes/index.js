@@ -19,19 +19,18 @@
 
 // module.exports = router;
 
-const express = require("express");
+const router = require('express').Router();
 const path = require('path');
-const app = express();
-const port = 3001;
+const apiRoutes = require('./api');
 
-app.get("/", (req, res) => {
+console.log("route testing");
+router.get("/", (req, res) => {
+  console.log("GET /");
     //handle root
     res.sendFile(path.join(__dirname, '../public/home.html'))
 });
 
-app.listen(port, err => {
-    if (err) {
-        return console.log("ERROR", err);
-    }
-    console.log(`Listening on port ${port}`);
-});
+console.log('about to invoke /api');
+router.use('/api', apiRoutes);
+
+module.exports = router;
