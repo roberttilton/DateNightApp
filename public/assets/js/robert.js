@@ -8,8 +8,8 @@ var entertainmentArray = [];
 var foodArray = [];
 
 var postObject = {
-    'Food': foodArray,
-    'Entertainment': entertainmentArray
+	'Food': foodArray,
+	'Entertainment': entertainmentArray
 }
 
 function renderYelp(type) {
@@ -17,7 +17,7 @@ function renderYelp(type) {
 	// checking if there are any posts to show and returning a statement
 	if (postObject[type].length === 0) {
 		console.log("Nothing to do around here!");
-    
+
 		yelpContent.appendChild(noFlair);
 		return;
 	}
@@ -43,7 +43,7 @@ fetch(`https://api.yelp.com/v3/businesses/search?term=${typeInput}&location=${us
 
 				// username parsing
 				var yelpUsers = document.createElement('span');
-				yelpUsers.textContent = data.businesses[i].;
+				yelpUsers.textContent = data.businesses[i];
 
 				// upvote/score parsing
 				var yelpScore = document.createElement('span');
