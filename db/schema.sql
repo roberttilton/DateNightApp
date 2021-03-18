@@ -13,7 +13,7 @@ CREATE TABLE user (
 CREATE TABLE dates (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     activity VARCHAR(50) NOT NULL,
-    activity_title VARCHAR(50) NOT NULL, 
+    business_name VARCHAR(50) NOT NULL, 
     address VARCHAR(100) NOT NULL,
     date VARCHAR(75) NOT NULL,
     user_id INT NOT NULL,
