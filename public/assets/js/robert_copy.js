@@ -1,14 +1,16 @@
-const fetch = require('node-fetch');
-const axios = require('axios');
-var yelpContent = document.getElementById('datePosts');
+var yelpContent = document.getElementById('exampleFormControlSelect2');
 // example code below
-var userLocation = document.querySelector('.location-field');
-var typeInput = document.querySelector('.activity-field');
+var userLocation = document.querySelector('#location-field').value;
+var typeInput = document.querySelector('#activity-field').value;
+console.log(typeInput);
+console.log(userLocation);
 
 function renderYelp() {
-	axios.get(`https://api.yelp.com/v3/businesses/search?term=${typeInput}&location=${userLocation}`, {
+	const URL = `https://api.yelp.com/v3/businesses/search?term=${typeInput}&location=${userLocation}`;
+	console.log(URL);
+	axios.get(URL, {
 		headers: {
-			'Authorization': process.env.AUTHORIZATIONKEY
+			'Authorization': 'rCAnqlM_1ZnGvXkWuH1wspttqOUMehZuLYGdZFD4s2XZx3mMOLTTuUFaXL0rpUpNXDWuwy42jCTJ78dMkXeKxAtZmGJ2Yzr1bfiXgB-ORDBMou_WVtBQCG6U679LYHYx'
 		}
 	})
 	.then(function (response) {
@@ -31,15 +33,17 @@ function renderYelp() {
 
 				// price pulling
 				dateCreator.textContent = data.businesses[i].price;
+
+				yelpContent.appendChild(dateCreator);
 				}
 			}
 	)
 	.catch(error => console.error(error));
 }
 
-document.querySelector("#populate").forEach(button => {
-	button.addEventListener("click", function (event) {
+document.querySelector("#datePosts")
+		.addEventListener("submit", function (event) {
 		event.preventDefault();
+		console.log('submit event');
 		renderYelp();
-	})
-});
+	});

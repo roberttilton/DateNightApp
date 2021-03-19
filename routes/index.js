@@ -7,7 +7,7 @@ router.route("/")
   .get((req, res) => {
     console.log("GET /");
     //handle root
-    res.sendFile(path.join(__dirname, '../public/index.html'))
+    res.sendFile(path.join(__dirname, '../public/homepage.html'))
   });
 
 router.route("/dashboard")
