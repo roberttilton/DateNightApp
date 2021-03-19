@@ -1,9 +1,7 @@
 var yelpContent = document.getElementById('exampleFormControlSelect2');
 // example code below
-var userLocation = document.querySelector('#location-field').value;
-var typeInput = document.querySelector('#activity-field').value;
-console.log(typeInput);
-console.log(userLocation);
+var userLocation = document.querySelector('#activity-field').value;
+var typeInput = document.querySelector('#location-field').value;
 
 function renderYelp() {
 	const URL = `https://api.yelp.com/v3/businesses/search?term=${typeInput}&location=${userLocation}`;
@@ -21,10 +19,10 @@ function renderYelp() {
 		function (data) {
 			for (var i = 0; i < data.businesses.length; i++) {
 				var dateCreator = document.createElement('option');
-
-				// pulling display name
+				
+				// pulling display named
 				dateCreator.textContent = data.businesses[i].name;
-
+				
 				// pulling display location
 				dateCreator.textContent = data.businesses[i].location.display_address;
 
@@ -41,9 +39,11 @@ function renderYelp() {
 	.catch(error => console.error(error));
 }
 
-document.querySelector("#datePosts")
-		.addEventListener("submit", function (event) {
+document.querySelector("#populate")
+		.addEventListener("click", function (event) {
 		event.preventDefault();
 		console.log('submit event');
+		console.log(typeInput);
+		console.log(userLocation);
 		renderYelp();
 	});
