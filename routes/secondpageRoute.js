@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const path = require('path');
 
-router.get('/secondpage', (req, res) => {
-    console.log('GET /secondpage');
-    res.sendFile(path.join(__dirname, '../public/secondpage.html'));
+router.get('/dashboard', (req, res) => {
+    console.log('GET /dashboard');
+    res.sendFile(path.join(__dirname, '../public/dashboard.html'));
 });
 
 router.get('/generatedcard', (req, res) => {
