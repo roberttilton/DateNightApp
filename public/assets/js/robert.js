@@ -1,78 +1,63 @@
-const fetch = require('node-fetch');
-var yelpContent = document.getElementById('datePosts');
-// example code below
-var userLocation = document.querySelector('.location-field');
-var typeInput = document.querySelector('.activity-field');
+// var yelpContent = document.getElementById('exampleFormControlSelect2');
+// // example code below
+// var userLocation = document.querySelector('#activity-field').value;
+// var typeInput = document.querySelector('#location-field').value;
 
-var entertainmentArray = [];
-var foodArray = [];
-
-var postObject = {
-	'Food': foodArray,
-	'Entertainment': entertainmentArray
-}
-
-function renderYelp(type) {
-	yelpContent.innerHTML = "";
-	// checking if there are any posts to show and returning a statement
-	if (postObject[type].length === 0) {
-		console.log("Nothing to do around here!");
-
-		yelpContent.appendChild(noFlair);
-		return;
-	}
-
-	for (const post of postObject[type]) {
-		yelpContent.appendChild(post);
-	}
-}
-
-fetch(`https://api.yelp.com/v3/businesses/search?term=${typeInput}&location=${userLocation}`)
+function renderYelp() {
+	console.log('renderYelp entered...');
+	var yelpContent = document.getElementById('exampleFormControlSelect2');
+	var userLocation = document.querySelector('#location-field').value;
+	var typeInput = document.querySelector('#activity-field').value;
+	const URL = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${typeInput}&location=${userLocation}`;
+	console.log(URL);
+	axios.get(URL, {
+		headers: {
+			Authorization: 'Bearer rCAnqlM_1ZnGvXkWuH1wspttqOUMehZuLYGdZFD4s2XZx3mMOLTTuUFaXL0rpUpNXDWuwy42jCTJ78dMkXeKxAtZmGJ2Yzr1bfiXgB-ORDBMou_WVtBQCG6U679LYHYx',
+			'Content-Type': 'application/json'
+		}
+	})
 	.then(function (response) {
-		return response.json();
+		console.log(response);
+		return response.json;
 	})
 	.then(
 		// function that parses the returned array and applies it where necessary
 		function (data) {
 			for (var i = 0; i < data.businesses.length; i++) {
 				var dateCreator = document.createElement('option');
+				
+				// pulling display named
+				dateCreator.textContent = data.businesses[i].name;
+				
+				// pulling display location
+				dateCreator.textContent = data.businesses[i].location.display_address;
 
-				// name of event/restaurant pulling
-				var yelpPosts = document.createElement('p');
-				yelpPosts.textContent = data.businesses[i].name;
+				// rating pulling
+				dateCreator.textContent = data.businesses[i].rating;
 
-				// username parsing
-				var yelpUsers = document.createElement('span');
-				yelpUsers.textContent = data.businesses[i];
+				// price pulling
+				dateCreator.textContent = data.businesses[i].price;
 
-				// upvote/score parsing
-				var yelpScore = document.createElement('span');
-
-				// url parsing, to add permalink to the clickable link functionality
-				const link = data.data.children[i].data.permalink;
-
-				// adding the results to the page
-				dateCreator.appendChild(yelpPosts);
-				dateCreator.appendChild(yelpUsers);
-				dateCreator.appendChild(yelpScore);
-				dateCreator.addEventListener("click", function () {
-					window.open(`https://www.yelp.com${link}`, "_blank");
-				});
-				// adding classes for styling
-				dateCreator.classList.add("yelp-post");
-				yelpPosts.classList.add("post-title");
-				yelpUsers.classList.add("post-author");
-				yelpScore.classList.add("post-score");
-				// creating and appending element for the upvote
-				var upvote = document.createElement("i");
-				upvote.className = "fas fa-arrow-up";
-				yelpScore.appendChild(upvote);
-				yelpScore.append(data.data.children[i].data.score);
-				// checking content for flair and pushing 
-				var currentFlair = data.data.children[i].data.link_flair_text;
-				if (Object.keys(postObject).includes(currentFlair)) {
-					postObject[currentFlair].push(dateCreator);
+				yelpContent.appendChild(dateCreator);
 				}
 			}
-		}
-	);
+	)
+	.catch(error => console.error(error));
+}
+
+// const formEl = document.querySelector('#datePosts');
+// console.log("formEl", formEl);
+// formEl.addEventListener('submit', function(event) {
+// 	event.preventDefault();
+// 	console.log('submit event');
+// 	renderYelp();
+// })
+
+document.querySelector("#populate")
+		.addEventListener("click", function (event) {
+		event.preventDefault();
+		console.log('submit event');
+		// console.log(typeInput);
+		// console.log(userLocation);
+		renderYelp();
+	});

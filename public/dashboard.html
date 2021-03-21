@@ -29,9 +29,9 @@
               <option>4</option>
               <option>5</option>
             </select>
+            <a class="btn btn-primary btn-lg mt-4" href="" role="button">View Past Dates</a>
           </form>
-        
-        <a class="btn btn-primary btn-lg mt-4" href="" role="button">View Past Dates</a>
+      
         </div>
     </div>
 
@@ -40,15 +40,15 @@
         <div style="margin-top: 80px;" class="jumbotron text-center">
         <h4 class="mt-4">Pick the events you want to include in your date!</h4>
         <br>
-        <div class="form-group" id="datePosts">
-            <div class="fetchInputs">
+        <form class="form-group" id="datePosts">
             <label>Enter the type of activity you would like to attend: </label>
-            <input type="text" class="activity-field">
+            <input type="text" class= "search-field" id="activity-field">
             <br>
             <label>Enter your location: </label>
-            <input type="text" class="location-field">
+            <input type="text" class= "search-field" id="location-field">
+            <br>
+            <a class="btn btn-primary btn-lg mt-4" href="" role="button" id='populate'>Populate Events</a>
             <hr>
-            </div>
             <label for="exampleFormControlSelect2">To select multiple events use CTRL + </label>
             <br>
             <select multiple class="form-control" id="exampleFormControlSelect2">
@@ -58,9 +58,8 @@
               <option>4</option>
               <option>5</option>
             </select>
-          </div>
+          </form>
         <hr>
-        <a class="btn btn-primary btn-lg mt-4" href="" role="button" id="#populate">Populate Events</a>
      </div>
     </div>
 
@@ -78,8 +77,10 @@
           </div>
     </div>
 
-    
-  <script src="/assets/js/logout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/logout.js"></script>
+  <script src="assets/js/robert.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>

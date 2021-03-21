@@ -11,6 +11,7 @@ console.log('about to invoke user routes');
 router.route('/user/signup')
     .post(async (req, res) => {
         console.log('POST /user/signup');
+        console.log(req.session);
         try {
             const dbUserData = await User.create({
                 username: req.body.username,
@@ -35,6 +36,7 @@ router.route('/user/signup')
 router.route('/user/login')
     .post(async (req, res) => {
         console.log('POST /api/user/login');
+        console.log(req.session);
         try {
             const dbUserData = await User.findOne({
                 where: {
@@ -83,7 +85,7 @@ router.route('/user/login')
 
 router.route('/user/logout')
     .post((req, res) => {
-        console.log(req.session)
+        console.log(req.session);
         // When the user logs out, destroy the session
         if (req.session.loggedIn) {
             req.session.destroy(() => {
