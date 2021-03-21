@@ -1,23 +1,48 @@
-var mediaContent = document.getElementById('exampleFormControlSelect2');
+var yelpContent = document.getElementById('datePosts');
+// example code below
+var userLocation = document.querySelector('.location-field');
+var typeInput = document.querySelector('.activity-field');
 
-function renderYelp() {
-	console.log('renderYelp entered...');
-	var titleInput = document.querySelector('#location-field').value;
-	const options = {
-		method: 'GET',
-		url: 'https://ivaee-internet-video-archive-entertainment-v1.p.rapidapi.com/entertainment/search/',
-		params: {Title: `'${titleInput}'`},
-		headers: {
-		  'content-type': 'application/json',
-		  'x-rapidapi-key': '0541b8cacfmsh933b0996a54232bp123830jsnc9b37c5006cd',
-		  'x-rapidapi-host': 'ivaee-internet-video-archive-entertainment-v1.p.rapidapi.com'
-		}
-	  };
-	  axios.request(options).then(function (response) {
-		console.log(response.data);
-	}).catch(function (error) {
-		console.error(error);
-	})
+var entertainmentArray = [];
+var foodArray = [];
+
+var postObject = {
+	'Food': foodArray,
+	'Entertainment': entertainmentArray
+}
+
+function renderYelp(type) {
+	yelpContent.innerHTML = "";
+	// checking if there are any posts to show and returning a statement
+	if (postObject[type].length === 0) {
+		console.log("Nothing to do around here!");
+
+		yelpContent.appendChild(noFlair);
+		return;
+	}
+
+	for (const post of postObject[type]) {
+		yelpContent.appendChild(post);
+	}
+}
+// AJAX CALL HERE
+// fetch(`https://api.yelp.com/v3/businesses/search?term=${typeInput}&location=${userLocation}`)
+// 	.then(function (response) {
+// 		return response.json();
+// 	})
+function ajaxCall () {
+$.ajax({
+	type: 'GET',
+	  dataType:"json",
+	url: 'https://api.yelp.com/v3/businesses/search?term=restaurants&location=newyorkcity',
+	headers: {         
+		'Authorization' : 'Bearer rCAnqlM_1ZnGvXkWuH1wspttqOUMehZuLYGdZFD4s2XZx3mMOLTTuUFaXL0rpUpNXDWuwy42jCTJ78dMkXeKxAtZmGJ2Yzr1bfiXgB-ORDBMou_WVtBQCG6U679LYHYx',
+		
+	},
+	success: function (data, status, xhr) {
+	  console.log('data: ', data);
+	}
+  })
 	.then(
 		// function that parses the returned array and applies it where necessary
 		function (data) {
@@ -36,15 +61,14 @@ function renderYelp() {
 				mediaContent.appendChild(dateCreator);
 				}
 			}
-	)
-	.catch(error => console.error(error));
-}
+		}
+	);
 
-document.querySelector("#populate")
+	document.querySelector("#populate")
 		.addEventListener("click", function (event) {
 		event.preventDefault();
 		console.log('submit event');
 		// console.log(typeInput);
 		// console.log(userLocation);
-		renderYelp();
+		ajaxCall();
 	});
