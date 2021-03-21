@@ -1,74 +1,75 @@
-var yelpContent = document.getElementById('datePosts');
-// example code below
-var userLocation = document.querySelector('.location-field');
-var typeInput = document.querySelector('.activity-field');
-
-var entertainmentArray = [];
-var foodArray = [];
-
-var postObject = {
-	'Food': foodArray,
-	'Entertainment': entertainmentArray
-}
-
-function renderYelp(type) {
-	yelpContent.innerHTML = "";
-	// checking if there are any posts to show and returning a statement
-	if (postObject[type].length === 0) {
-		console.log("Nothing to do around here!");
-
-		yelpContent.appendChild(noFlair);
-		return;
-	}
-
-	for (const post of postObject[type]) {
-		yelpContent.appendChild(post);
-	}
-}
-// AJAX CALL HERE
-// fetch(`https://api.yelp.com/v3/businesses/search?term=${typeInput}&location=${userLocation}`)
-// 	.then(function (response) {
-// 		return response.json();
-// 	})
-function ajaxCall () {
-$.ajax({
-	type: 'GET',
-	  dataType:"json",
-	url: 'https://api.yelp.com/v3/businesses/search?term=restaurants&location=newyorkcity',
-	headers: {         
-		'Authorization' : 'Bearer rCAnqlM_1ZnGvXkWuH1wspttqOUMehZuLYGdZFD4s2XZx3mMOLTTuUFaXL0rpUpNXDWuwy42jCTJ78dMkXeKxAtZmGJ2Yzr1bfiXgB-ORDBMou_WVtBQCG6U679LYHYx',
-		
-	},
-	success: function (data, status, xhr) {
-	  console.log('data: ', data);
-	}
-  })
-	.then(
-		// function that parses the returned array and applies it where necessary
-		function (data) {
-			console.log(data);
-			for (var i = 0; i < data.data.hits.length; i++) {
+function renderYelp() {
+	console.log('renderYelp entered...');
+	var yelpContent = document.getElementById('exampleFormControlSelect2');
+	var userLocation = document.querySelector('#location-field').value;
+	var typeInput = document.querySelector('#activity-field').value;
+	const URL = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${typeInput}&location=${userLocation}`;
+	console.log(URL);
+	axios.get(URL, {
+		headers: {
+			Authorization: 'Bearer rCAnqlM_1ZnGvXkWuH1wspttqOUMehZuLYGdZFD4s2XZx3mMOLTTuUFaXL0rpUpNXDWuwy42jCTJ78dMkXeKxAtZmGJ2Yzr1bfiXgB-ORDBMou_WVtBQCG6U679LYHYx',
+			'Content-Type': 'application/json'
+		}
+	})
+		.then(function (response) {
+			console.log(response);
+			for (var i = 0; i < response.data.businesses.length; i++) {
 				var dateCreator = document.createElement('option');
-				// pulling display named
-				dateCreator.appendChild(data.hits[i].Title);
-				console.log('are we dating yet')
-				// pulling display location
-				dateCreator.innerHTML = data.hits[i].Type;
-				console.log('probably not')
-				// rating pulling
-				dateCreator.innerHTML = data.hits[i].IvaRating;
 
-				mediaContent.appendChild(dateCreator);
+				// pulling display named
+				var businessName = document.createElement('span');
+				businessName.textContent = response.data.businesses[i].name;
+
+				// pulling display location
+				var displayLocation = document.createElement('span');
+				displayLocation.textContent = response.data.businesses[i].location.display_address;
+
+				// rating pulling
+				var businessRating = document.createElement('span');
+				businessRating.textContent = response.data.businesses[i].rating;
+
+				// price pulling
+				var priceYelp = document.createElement('span');
+				priceYelp.textContent = response.data.businesses[i].price;
+
+				dateCreator.appendChild(businessName);
+				dateCreator.appendChild(displayLocation);
+				dateCreator.appendChild(businessRating);
+				dateCreator.appendChild(priceYelp);
+				yelpContent.appendChild(dateCreator);
+			}
+			return response.json;
+		})
+		.then(
+			// function that parses the returned array and applies it where necessary
+			function (response) {
+				for (var i = 0; i < response.businesses.length; i++) {
+					var dateCreator = document.createElement('option');
+
+					// pulling display named
+					dateCreator.textContent = response.businesses[i].name;
+					console.log(dateCreator);
+					// pulling display location
+					dateCreator.textContent = response.businesses[i].location.display_address;
+					console.log(dateCreator);
+					// rating pulling
+					dateCreator.textContent = response.businesses[i].rating;
+
+					// price pulling
+					dateCreator.textContent = response.businesses[i].price;
+
+					yelpContent.appendChild(dateCreator);
 				}
 			}
-		}
-	);
+		)
+		.catch(error => console.error(error));
+}
 
-	document.querySelector("#populate")
-		.addEventListener("click", function (event) {
+document.querySelector("#populate")
+	.addEventListener("click", function (event) {
 		event.preventDefault();
 		console.log('submit event');
 		// console.log(typeInput);
 		// console.log(userLocation);
-		ajaxCall();
+		renderYelp();
 	});
