@@ -18,25 +18,50 @@ function renderYelp() {
 	})
 	.then(function (response) {
 		console.log(response);
+		for (var i = 0; i < response.data.businesses.length; i++) {
+			var dateCreator = document.createElement('option');
+			
+			// pulling display named
+			var businessName = document.createElement('span');
+			businessName.textContent = response.data.businesses[i].name;
+	
+			// pulling display location
+			var displayLocation = document.createElement('span');
+			displayLocation.textContent = response.data.businesses[i].location.display_address;
+		
+			// rating pulling
+			var businessRating = document.createElement('span');
+			businessRating.textContent = response.data.businesses[i].rating;
+			
+			// price pulling
+			var priceYelp = document.createElement('span');
+			priceYelp.textContent = response.data.businesses[i].price;
+
+			dateCreator.appendChild(businessName);
+			dateCreator.appendChild(displayLocation);
+			dateCreator.appendChild(businessRating);
+			dateCreator.appendChild(priceYelp);
+			yelpContent.appendChild(dateCreator);
+			}
 		return response.json;
 	})
 	.then(
 		// function that parses the returned array and applies it where necessary
-		function (data) {
-			for (var i = 0; i < data.businesses.length; i++) {
+		function (response) {
+			for (var i = 0; i < response.businesses.length; i++) {
 				var dateCreator = document.createElement('option');
 				
 				// pulling display named
-				dateCreator.textContent = data.businesses[i].name;
-				
+				dateCreator.textContent = response.businesses[i].name;
+				console.log(dateCreator);
 				// pulling display location
-				dateCreator.textContent = data.businesses[i].location.display_address;
-
+				dateCreator.textContent = response.businesses[i].location.display_address;
+				console.log(dateCreator);
 				// rating pulling
-				dateCreator.textContent = data.businesses[i].rating;
+				dateCreator.textContent = response.businesses[i].rating;
 
 				// price pulling
-				dateCreator.textContent = data.businesses[i].price;
+				dateCreator.textContent = response.businesses[i].price;
 
 				yelpContent.appendChild(dateCreator);
 				}
