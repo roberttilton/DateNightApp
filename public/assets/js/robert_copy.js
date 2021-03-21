@@ -16,58 +16,58 @@ function renderYelp() {
 			'Content-Type': 'application/json'
 		}
 	})
-	.then(function (response) {
-		console.log(response);
-		for (var i = 0; i < response.data.businesses.length; i++) {
-			var dateCreator = document.createElement('option');
-			
-			// pulling display named
-			var businessName = document.createElement('span');
-			businessName.textContent = response.data.businesses[i].name;
-	
-			// pulling display location
-			var displayLocation = document.createElement('span');
-			displayLocation.textContent = response.data.businesses[i].location.display_address;
-		
-			// rating pulling
-			var businessRating = document.createElement('span');
-			businessRating.textContent = response.data.businesses[i].rating;
-			
-			// price pulling
-			var priceYelp = document.createElement('span');
-			priceYelp.textContent = response.data.businesses[i].price;
-
-			dateCreator.appendChild(businessName);
-			dateCreator.appendChild(displayLocation);
-			dateCreator.appendChild(businessRating);
-			dateCreator.appendChild(priceYelp);
-			yelpContent.appendChild(dateCreator);
-			}
-		return response.json;
-	})
-	.then(
-		// function that parses the returned array and applies it where necessary
-		function (response) {
-			for (var i = 0; i < response.businesses.length; i++) {
+		.then(function (response) {
+			console.log(response);
+			for (var i = 0; i < response.data.businesses.length; i++) {
 				var dateCreator = document.createElement('option');
-				
+
 				// pulling display named
-				dateCreator.textContent = response.businesses[i].name;
-				console.log(dateCreator);
+				var businessName = document.createElement('span');
+				businessName.textContent = response.data.businesses[i].name;
+
 				// pulling display location
-				dateCreator.textContent = response.businesses[i].location.display_address;
-				console.log(dateCreator);
+				var displayLocation = document.createElement('span');
+				displayLocation.textContent = response.data.businesses[i].location.display_address;
+
 				// rating pulling
-				dateCreator.textContent = response.businesses[i].rating;
+				var businessRating = document.createElement('span');
+				businessRating.textContent = response.data.businesses[i].rating;
 
 				// price pulling
-				dateCreator.textContent = response.businesses[i].price;
+				var priceYelp = document.createElement('span');
+				priceYelp.textContent = response.data.businesses[i].price;
 
+				dateCreator.appendChild(businessName);
+				dateCreator.appendChild(displayLocation);
+				dateCreator.appendChild(businessRating);
+				dateCreator.appendChild(priceYelp);
 				yelpContent.appendChild(dateCreator);
+			}
+			return response.json;
+		})
+		.then(
+			// function that parses the returned array and applies it where necessary
+			function (response) {
+				for (var i = 0; i < response.businesses.length; i++) {
+					var dateCreator = document.createElement('option');
+
+					// pulling display named
+					dateCreator.textContent = response.businesses[i].name;
+					console.log(dateCreator);
+					// pulling display location
+					dateCreator.textContent = response.businesses[i].location.display_address;
+					console.log(dateCreator);
+					// rating pulling
+					dateCreator.textContent = response.businesses[i].rating;
+
+					// price pulling
+					dateCreator.textContent = response.businesses[i].price;
+
+					yelpContent.appendChild(dateCreator);
 				}
 			}
-	)
-	.catch(error => console.error(error));
+		)
+		.catch(error => console.error(error));
 }
 
 // const formEl = document.querySelector('#datePosts');
@@ -79,7 +79,7 @@ function renderYelp() {
 // })
 
 document.querySelector("#populate")
-		.addEventListener("click", function (event) {
+	.addEventListener("click", function (event) {
 		event.preventDefault();
 		console.log('submit event');
 		// console.log(typeInput);
