@@ -1,23 +1,12 @@
-// var yelpContent = document.getElementById('exampleFormControlSelect2');
-// // example code below
-// var userLocation = document.querySelector('#activity-field').value;
-// var typeInput = document.querySelector('#location-field').value;
-import axios from "axios";
+var mediaContent = document.getElementById('exampleFormControlSelect2');
 
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
 function renderYelp() {
 	console.log('renderYelp entered...');
-	var yelpContent = document.getElementById('exampleFormControlSelect2');
-	var userLocation = document.querySelector('#location-field').value;
-	var typeInput = document.querySelector('#activity-field').value;
+	var titleInput = document.querySelector('#location-field').value;
 	const options = {
 		method: 'GET',
 		url: 'https://ivaee-internet-video-archive-entertainment-v1.p.rapidapi.com/entertainment/search/',
-		params: {Title: `'${userLocation}'`},
+		params: {Title: `'${titleInput}'`},
 		headers: {
 		  'content-type': 'application/json',
 		  'x-rapidapi-key': '0541b8cacfmsh933b0996a54232bp123830jsnc9b37c5006cd',
@@ -32,35 +21,24 @@ function renderYelp() {
 	.then(
 		// function that parses the returned array and applies it where necessary
 		function (data) {
-			for (var i = 0; i < data.businesses.length; i++) {
+			console.log(data);
+			for (var i = 0; i < data.data.hits.length; i++) {
 				var dateCreator = document.createElement('option');
-				let response = JSON.stringify(data.request.response);
 				// pulling display named
-				dateCreator.textContent = data.businesses[i].name;
-				
+				dateCreator.appendChild(data.hits[i].Title);
+				console.log('are we dating yet')
 				// pulling display location
-				dateCreator.textContent = data.businesses[i].location.display_address;
-
+				dateCreator.innerHTML = data.hits[i].Type;
+				console.log('probably not')
 				// rating pulling
-				dateCreator.textContent = data.businesses[i].rating;
+				dateCreator.innerHTML = data.hits[i].IvaRating;
 
-				// price pulling
-				dateCreator.textContent = data.businesses[i].price;
-
-				yelpContent.appendChild(dateCreator);
+				mediaContent.appendChild(dateCreator);
 				}
 			}
 	)
 	.catch(error => console.error(error));
 }
-
-// const formEl = document.querySelector('#datePosts');
-// console.log("formEl", formEl);
-// formEl.addEventListener('submit', function(event) {
-// 	event.preventDefault();
-// 	console.log('submit event');
-// 	renderYelp();
-// })
 
 document.querySelector("#populate")
 		.addEventListener("click", function (event) {
