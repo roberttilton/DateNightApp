@@ -36,10 +36,7 @@ function createYourDate() {
     const yelpContent = document.getElementById('exampleFormControlSelect2');
     var yelpDatabase = yelpContent.options[yelpContent.selectedIndex].text;
     console.log(yelpDatabase);
-    
-    Dates.create({ activity: yelpDatabase, partner_name: whoDate, time_date: whenDate })
 }
-
 // const yelpContent = document.getElementById('exampleFormControlSelect2').text;
 // console.log(yelpContent);
 // how to look at select value based on option selection
