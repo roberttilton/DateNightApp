@@ -8,7 +8,7 @@ const {
 // URL: /api/user
 console.log('about to invoke user routes');
 
-router.route('/user/signup')
+router.route('/signup')
     .post(async (req, res) => {
         console.log('POST /user/signup');
         console.log(req.session);
@@ -33,7 +33,7 @@ router.route('/user/signup')
         }
     });
 
-router.route('/user/login')
+router.route('/login')
     .post(async (req, res) => {
         console.log('POST /api/user/login');
         console.log(req.session);
@@ -83,7 +83,7 @@ router.route('/user/login')
         }
     });
 
-router.route('/user/logout')
+router.route('/logout')
     .post((req, res) => {
         console.log(req.session);
         // When the user logs out, destroy the session
@@ -97,6 +97,5 @@ router.route('/user/logout')
             res.status(404).end();
         }
     });
-
 
 module.exports = router;
