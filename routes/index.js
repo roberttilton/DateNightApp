@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const path = require('path');
-const apiRoutes = require('./api/user');
+const userRoutes = require('./api/user');
+const yelpRoutes = require('./api/yelp');
 
 console.log("route testing");
 router.route("/")
@@ -17,7 +18,9 @@ router.route("/dashboard")
     res.sendFile(path.join(__dirname, '../public/dashboard.html'))
   });
 
+
 console.log('about to invoke /api');
-router.use('/api', apiRoutes);
+router.use('/api/user', userRoutes);
+router.use('/api/yelp', yelpRoutes);
 
 module.exports = router;
