@@ -18,15 +18,11 @@ Dates.init({
     type: DataTypes.STRING,
     allowNull: false
   },
-  business_name: {
+  partner_name: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  address: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  date: {
+  time_date: {
     type: DataTypes.STRING,
     allowNull: false
   },

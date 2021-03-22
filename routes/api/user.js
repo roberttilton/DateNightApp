@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs')
 const router = require('express').Router();
 const {
-    User
+    User , Dates
 } = require('../../models');
 
 // URL: /api/user
@@ -98,4 +98,9 @@ router.route('/logout')
         }
     });
 
+router.route('/')
+    .post((req, res) => {
+        
+    })
+   
 module.exports = router;

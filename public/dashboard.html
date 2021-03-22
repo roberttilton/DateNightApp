@@ -49,25 +49,11 @@
           <br>
           <a class="btn btn-primary btn-lg mt-4" href="" role="button" id='populate'>Populate Events</a>
           <hr>
-          <label for="exampleFormControlSelect2">To select multiple events use CTRL + </label>
+          <label for="exampleFormControlSelect2">Select an activity (such as an event or a restaurant) below! </label>
           <br>
           <select multiple class="form-control" id="exampleFormControlSelect2">
           </select>
-          <a class="btn btn-primary btn-lg mt-4" href="" role="button" id='populate2'>Submit Selections</a>
         </form>
-            <label>Enter the type of activity you would like to attend: </label>
-            <input type="text" class= "search-field" id="activity-field">
-            <br>
-            <label>Enter your location: </label>
-            <input type="text" class= "search-field" id="location-field">
-            <br>
-            <a class="btn btn-primary btn-lg mt-4" href="" role="button" id='populate'>Populate Events</a>
-            <hr>
-            <label for="exampleFormControlSelect2">To select multiple events use CTRL + </label>
-            <br>
-            <select multiple class="form-control" id="exampleFormControlSelect2">
-            </select>
-          </form>
         <hr>
      </div>
     </div>
@@ -76,16 +62,16 @@
     <div class="container">
          <div style="margin-top: 80px;" class="jumbotron text-center">
           <h3>Who are you inviting?</h3>
-          <input type="text">
+          <input type="text" id='who'>
           <hr>
           <h3>What time is your date?</h3>
-          <input type="datetime-local" class="form-control">
+          <input type="datetime-local" class="form-control" id='when'>
           <br>
           <br>
-          <a class="btn btn-primary btn-lg mt-4" href="" role="button">Create Your Date!</a>
+          <a class="btn btn-primary btn-lg mt-4" href="" role="button" id='populate3'>Create Your Date!</a>
           </div>
     </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>\
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/js/logout.js"></script>
