@@ -43,7 +43,6 @@ Converted Authorization Key to an environmental variable for security purposes.
 - Added folder structure
 - Create ReadMe
 
-
-PLEASE NOTE: This project requires to be deployed locally in order to function at this point, using any method of launch you prefer (npx nodemon, node server.js, so on and so forth.) We were unable to get Heroku to cooperate with us at any point the entire project!
+[Deployed Link](https://frozen-castle-67478.herokuapp.com/)
 
 Built with Visual Studio Code
